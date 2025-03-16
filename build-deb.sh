@@ -2,7 +2,7 @@
 set -e
 
 # Update this URL when a new version of Claude Desktop is released
-CLAUDE_DOWNLOAD_URL="https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest-win-x64/Claude-Setup-x64.exe"
+#CLAUDE_DOWNLOAD_URL="https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest-win-x64/Claude-Setup-x64.exe"
 
 # Check for Debian-based system
 if [ ! -f "/etc/debian_version" ]; then
@@ -83,7 +83,8 @@ if ! check_command "electron"; then
 fi
 
 # Extract version from the installer filename
-VERSION=$(basename "$CLAUDE_DOWNLOAD_URL" | grep -oP 'Claude-Setup-x64\.exe' | sed 's/Claude-Setup-x64\.exe/0.8.0/')
+#VERSION=$(basename "$CLAUDE_DOWNLOAD_URL" | grep -oP 'Claude-Setup-x64\.exe' | sed 's/Claude-Setup-x64\.exe/0.8.0/')
+VERSION=0.8.1
 PACKAGE_NAME="claude-desktop"
 ARCHITECTURE="amd64"
 MAINTAINER="Claude Desktop Linux Maintainers"
@@ -111,11 +112,11 @@ fi
 
 # Download Claude Windows installer
 echo "📥 Downloading Claude Desktop installer..."
-CLAUDE_EXE="$WORK_DIR/Claude-Setup-x64.exe"
-if ! wget -O "$CLAUDE_EXE" "$CLAUDE_DOWNLOAD_URL"; then
-    echo "❌ Failed to download Claude Desktop installer"
-    exit 1
-fi
+CLAUDE_EXE="/home/user/git/claude-desktop-debian/downloads/Claude-Setup-x64.exe"
+#if ! wget -O "$CLAUDE_EXE" "$CLAUDE_DOWNLOAD_URL"; then
+#    echo "❌ Failed to download Claude Desktop installer"
+#    exit 1
+#fi
 echo "✓ Download complete"
 
 # Extract resources
